@@ -1,3 +1,12 @@
+//Global constants
+_wiki_game = {
+	"0": "https://en.wikipedia.org/wiki/Biology",
+	"1": "https://en.wikipedia.org/wiki/Computer_science",
+	"2": "https://en.wikipedia.org/wiki/Physics",
+	"3": "https://en.wikipedia.org/wiki/Chemistry"
+}
+
+
 //Get a random wiki page
 var getRandomWiki = function(callback){
 
@@ -21,6 +30,10 @@ var play = function(){
 	$("#gameCover").hide();
 	$("#iframePanel").show();
 	window.location.href += "#game";
+	
+	var activeIndex = $("#targetWiki .carousel-indicators .active").attr("data-slide-to");
+	var initialWikiUrl = _wiki_game[activeIndex];
+	$("#wikiFrame").attr("src", initialWikiUrl);
 }
 
 var playWithTimer = function(){
@@ -42,10 +55,17 @@ $(document).ready(function(){
 			$("#timerDialog").modal('toggle');
 		}
 		else{
-			$("#startTimer").addClass("btn-danger");
+			$("#startTimer").addClass("btn-error");
 			setTimeout(function(){
-				$("#startTimer").removeClass("btn-danger");
+				$("#startTimer").removeClass("btn-error");
 			}, 1000);
+			$("#startTimer").css({"transform": "translate(10px)"});
+			$("#startTimer").css({"transform": "translate(-10px)"});
+			$("#startTimer").css({"transform": "translate(5px)"});
+			$("#startTimer").css({"transform": "translate(-5px)"});
+			$("#startTimer").css({"transform": "translate(-3px)"});
+			$("#startTimer").css({"transform": "translate(3px)"});
+			$("#startTimer").css({"transform": "translate(0px)"});
 		}
 	});
 	

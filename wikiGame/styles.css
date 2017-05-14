@@ -95,7 +95,20 @@ a{
 	-webkit-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     transition: background-color 1000ms linear;
+	transition: 1s ease-in-out;
 }
 .block-text{
 	display: block;
+}
+.shake-left{
+	transform: translate(-15px);
+}
+.shake-right{
+	transform: translate(15px);
+}
+.btn-accept{
+	background-color: #4ea74e;
+}
+.btn-error{
+	background-color: #e44c4c;
 }
