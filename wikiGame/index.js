@@ -14,7 +14,7 @@ var getRandomWiki = function(callback){
 
 	//generate the url
 	var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?format=json&generator=random&action=query";
-	
+	var queryData = [];
 	// Using jQuery
 	$.ajax({
 		url: remoteUrlWithOrigin,
@@ -35,6 +35,11 @@ var play = function(){
 	
 	var activeIndex = $("#targetWiki .carousel-indicators .active").attr("data-slide-to");
 	_wiki_game.targetWiki = _wiki_game[activeIndex];
+	
+	//get a random wikipedia page
+	getRandomWiki(function(page_title){
+		
+	});
 }
 
 var startTimer = function(time){
