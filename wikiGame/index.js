@@ -79,7 +79,9 @@ var startTimer = function(time){
 		if(seconds == 0 && minutes == 0 && hours == 0){
 			clearInterval(_wiki_game.timerRef);
 			$("#iframePanel").hide();
-			$("#gameCover").show();
+			$("#gameCover").hide();
+			$("#gameOverPanel").show();
+			gameOver(false);
 			$("#timerPanel").removeClass("timer-panel-show");
 		}
 		hours = hours?"00":hours;
@@ -136,7 +138,11 @@ $(document).ready(function(){
 		var url = $(this).attr("src");
 		_wiki_game["clicks"].push(url);
 		if(url == _wiki_game["targetWiki"]){
-			
+			gameOver(true);
 		}
+	});
+	
+	$("#tryAgain").click(function(){
+		window.location.reload();
 	});
 });
