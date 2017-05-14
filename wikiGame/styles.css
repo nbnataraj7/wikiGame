@@ -1,0 +1,101 @@
+html, body{
+height: 100%;
+width: 100%;
+margin: 0px auto;
+font-family: 'Press Start 2P', cursive;
+}
+.match-parent{
+height: 100%;
+width: 100%;
+}
+.container{
+	height: 100%;
+}
+.text-white{
+	color: #fff;
+}
+.text-header{
+	font-size: 30px;
+	font-weight: bold;
+}
+.text-normal{
+	font-size: 20px;
+}
+.wrap-text{
+	width: 120px;
+	margin: auto;
+	padding: 10px;
+}
+.iframe-panel{
+	height: 85%;
+}
+.full-height{
+	height: 100%;
+}
+.menu{
+	height: 85%;
+	border: 1px solid #000;
+}
+.left-buttons{
+	margin: auto;
+    position: absolute;
+    bottom: 15px;
+}
+.text-bold{
+	font-weight: bold;
+}
+.text-center{
+	text-align: center;
+}
+.modal-footer{
+	background: #d6ead3
+}
+#gameCover{
+	display: table;
+	table-layout: fixed;
+}
+#iframePanel{
+	display: none;
+}
+.container-shadow{
+	box-shadow: 4px 3px 15px 3px rgba(0, 0, 0, 0.42);
+}
+a{
+	cursor: pointer;
+}
+.play-buttons .btn, .play-buttons .carousel{
+	background: rgba(153, 159, 245, 0.44);
+	margin-top:5px;
+	margin-bottom: 5px;
+}
+.play-buttons{
+	padding: 5%;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#targetWiki .carousel-inner img{
+	height: 150px;
+    display: inline-block;
+    float: left;
+}
+.panel.inline-panel{
+	display: inline-block;
+}
+.right-align{
+	float: right;
+}
+#timerDialog  .modal-dialog{
+	background: #fff;
+}
+.pointer{
+	cursor: pointer;
+}
+#startTimer{
+	-webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+}
+.block-text{
+	display: block;
+}

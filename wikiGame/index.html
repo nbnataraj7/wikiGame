@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wiki Game</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="referrer" content="origin-when-cross-origin" class="">
+
+<!-- JQuery -->
+<script src="jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- app script -->
+<script src="index.js?v=4"></script>
+
+<!-- custom styles -->
+<link rel="stylesheet" href="styles.css?v=6"/>
+
+<!-- custom font -- credits : codeman38 https://fonts.google.com/specimen/Press+Start+2P?selection.family=Press+Start+2P -->
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+</head>
+<body>
+<div class="navbar navbar-inverse">
+<div class="container-fluid">
+<div class="navbar-header">
+<span class="text-white text-header">WikiGame</span>
+</div>
+<ul class="nav navbar-nav navbar-right">
+<!--<li><span class="text-white text-bold btn"></span></li>-->
+<li data-target="#confirmRestart" data-toggle="modal"><a>Restart</a></li>
+<li><a target="_new" href="https://github.com/nbnataraj7">Github</a></li>
+</ul>
+</div>
+</div>
+<div class="container">
+<div class="panel full-height row">
+	<div id="iframePanel" class="panel iframe-panel container-shadow">
+	<!--<iframe class="match-parent" id="wikiFrame" src="https://en.m.wikipedia.org/wiki/The_Holocaust">-->
+	<iframe class="match-parent" id="wikiFrame" src="">
+	</iframe>
+	</div>
+	<div id="gameCover" class="col-md-12 panel iframe-panel container-shadow">
+	<div class="panel align-middle play-buttons">
+		<div class="btn btn-lg btn-block center-block play">Play</div>
+		<div class="btn btn-lg btn-block center-block play-timer" data-target="#timerDialog" data-toggle="modal">Play with timer</div>
+		<div id="targetWiki" class="center-block carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#targetWiki" data-slide-to="0" class="active"></li>
+				<li data-target="#targetWiki" data-slide-to="1"></li>
+				<li data-target="#targetWiki" data-slide-to="2"></li>
+				<li data-target="#targetWiki" data-slide-to="3"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+				<a target="_new" href="https://en.wikipedia.org/wiki/Biology">
+				   <img src="resources/biology.png"/>
+				   <div class="panel inline-panel">
+				   <span>Biology wiki</span>
+				   </div>
+				</a>
+				</div>
+				<div class="item">
+				<a target="_new" href="https://en.wikipedia.org/wiki/computer_science">
+				   <img src="resources/cs.png"/>
+				   <div class="panel inline-panel">
+				   <span>Computer science wiki</span>
+				   </div>
+				</a>
+				</div>
+				<div class="item">
+				<a target="_new" href="https://en.wikipedia.org/wiki/Physics">
+				   <img src="resources/physics.png"/>
+				   <div class="panel inline-panel">
+				   <span>Physics wiki</span>
+				   </div>
+				</a>
+				</div>
+				<div class="item">
+				<a target="_new" href="https://en.wikipedia.org/wiki/Chemistry">
+				   <img src="resources/chemistry.png"/>
+				   <div class="panel inline-panel">
+				   <span>Chemistry wiki</span>
+				   </div>
+				</a>
+				</div>
+				<a class="left carousel-control" href="#targetWiki" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#targetWiki" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+		<div class="alert alert-info"><span>The active wiki link here will be the target!</span></div>
+	</div>
+	</div>
+</div>
+</div>
+
+<!-- Confirm dialog -->
+<div id="confirmRestart" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<span class="text-header">Confirm</span>
+</div>
+<div class="modal-body text-normal">
+<span>Are you sure you want to restart the game? All your progress will be lost.</span>
+</div>
+<div class="modal-footer">
+<div id="restartGame" class="pull-left btn btn-success btn-lg">YES</div>
+<div id="closeRestartDialog" class="pull-right btn btn-danger btn-lg">NO</div>
+</div>
+</div>
+</div>
+</div>
+<!-- confirm dialog end -->
+
+<!-- Timer confirmation -->
+<div id="timerDialog" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<div class="modal-header">
+<span>Enter the time in minutes</span>
+<span data-target="#timerDialog" data-toggle="modal" class="right-align pointer">&times;</span>
+</div>
+<div class="modal-body">
+<input type="number" id="timerInput" class="form-control center text-center">
+<span class="block-text text-center">&nbsp;&nbsp;Minutes</span>
+</div>
+<div class="modal-footer">
+<div id="startTimer" class="btn btn-block btn-lg btn-success">Start!
+</div>
+</div>
+</div>
+</div>
+<!-- end of timer dialog-->
+</body>
+</html>
