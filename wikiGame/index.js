@@ -55,7 +55,8 @@ var startTimer = function(time){
 		if(seconds == 0 && minutes == 0 && hours == 0){
 			clearInterval(_wiki_game.timerRef);
 			$("#iframePanel").hide();
-			$("gameCover").show();
+			$("#gameCover").show();
+			$("#timerPanel").removeClass("timer-panel-show");
 		}
 		hours = hours?"00":hours;
 		minutes = minutes == 0?"00":minutes;
