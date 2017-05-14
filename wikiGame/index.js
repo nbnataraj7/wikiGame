@@ -31,7 +31,7 @@ var getRandomWiki = function(callback){
 var play = function(){
 	$("#gameCover").hide();
 	$("#iframePanel").show();
-	window.location.href += "#game";
+	//window.location.href += "#game";
 	
 	var activeIndex = $("#targetWiki .carousel-indicators .active").attr("data-slide-to");
 	_wiki_game.targetWiki = _wiki_game[activeIndex];
@@ -44,11 +44,11 @@ var startTimer = function(time){
 	var milliseconds = seconds * 1000;
 	_wiki_game.timerRef = setInterval(function(){
 		seconds--;
-		if(minutes && seconds == 0){
+		if(minutes>0 && seconds == 0){
 			seconds = 59;
 			minutes--;
 		}
-		if(hours && minutes == 0){
+		if(hours>0 && minutes == 0){
 			minutes = 59;
 			hours--;
 		}
@@ -80,7 +80,9 @@ $(document).ready(function(){
 			play();
 			$("#timerDialog").modal('toggle');
 			startTimer(time);
-			$("#timerPanel").addClass("timer-panel-show");
+			setTimeout(function(){
+				$("#timerPanel").addClass("timer-panel-show");
+			}, 900);
 		}
 		else{
 			$("#startTimer").addClass("btn-error");
