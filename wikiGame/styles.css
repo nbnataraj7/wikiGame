@@ -112,3 +112,14 @@ a{
 .btn-error{
 	background-color: #e44c4c;
 }
+.timer-panel{
+	width: 200px;
+    height: 25px;
+    text-align: center;
+    margin: auto;
+	transform: translate(0px, -35px);
+	transition: transform 1s ease-in-out;
+}
+.timer-panel-show{
+	transform: translate(0px, 25px);
+}
