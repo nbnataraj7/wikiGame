@@ -21,10 +21,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- app script -->
-<script src="index.js?v=9"></script>
+<script src="index.js?v=10"></script>
 
 <!-- custom styles -->
-<link rel="stylesheet" href="styles.css?v=9"/>
+<link rel="stylesheet" href="styles.css?v=12"/>
 
 <!-- custom font -- credits : codeman38 https://fonts.google.com/specimen/Press+Start+2P?selection.family=Press+Start+2P -->
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
@@ -65,35 +65,31 @@
 			<div class="carousel-inner">
 				<div class="item active">
 				<a target="_new" href="https://en.wikipedia.org/wiki/Biology">
-				   <img src="resources/biology.png"/>
-				   <div class="panel inline-panel">
-				   <span>Biology wiki</span>
-				   </div>
-				</a>
+					<img src="resources/bio.png"/>				   
+					</a>
+					<div>
+					   <span style="position: absolute;top: 24px;">Biology wiki</span>
+				    </div>
 				</div>
 				<div class="item">
-				<a target="_new" href="https://en.wikipedia.org/wiki/computer_science">
-				   <img src="resources/cs.png"/>
-				   <div class="panel inline-panel">
-				   <span>Computer science wiki</span>
-				   </div>
-				</a>
+				<span style="position: absolute; top: 159px; width: 206px; text-align: left; padding-left: 6px; color: #ffffff; display: inline-block;">Computer science wiki</span>			
+					<a target="_new" href="https://en.wikipedia.org/wiki/Biology">
+					   <img src="resources/comS.png"/>				   
+					</a>
 				</div>
 				<div class="item">
-				<a target="_new" href="https://en.wikipedia.org/wiki/Physics">
-				   <img src="resources/physics.png"/>
-				   <div class="panel inline-panel">
-				   <span>Physics wiki</span>
-				   </div>
-				</a>
+				<span style="position: absolute; top: 90px; text-align: left; padding-left: 22px; color: #ffffff; display: inline-block;">Physics wiki</span>
+					<a target="_new" href="https://en.wikipedia.org/wiki/Biology">
+					   <img src="resources/phy.png"/>				   
+					</a>
 				</div>
 				<div class="item">
 				<a target="_new" href="https://en.wikipedia.org/wiki/Chemistry">
-				   <img src="resources/chemistry.png"/>
-				   <div class="panel inline-panel">
-				   <span>Chemistry wiki</span>
-				   </div>
-				</a>
+					   <img src="resources/che.png"/>				   
+					</a>
+					<div>
+						<span style="position: absolute; top: 81px; width: 101px; text-align: center; padding-left: 37px; display: inline-block;">Chemistry wiki</span>
+					</div>
 				</div>
 				<a class="left carousel-control" href="#targetWiki" data-slide="prev">
 					<span class="glyphicon glyphicon-chevron-left"></span>
@@ -106,6 +102,17 @@
 			</div>
 		</div>
 		<div class="alert alert-info"><span>The active wiki link here will be the target!</span></div>
+	</div>
+	</div>
+	<div id="gameOverPanel" class="panel iframe-panel container-shadow">
+	<div class="panel game-over-img-panel col-md-12 game-won">
+		<img id="gameOverImage" src="" alt="You won!" class="img-responsive game-over-img"/>
+		<div class="panel big-text score">
+		<span>{scoreCard}</span>
+		</div>
+		<div class="btn btn-accept btn-block btn-lg">
+		Try Again
+		</div>
 	</div>
 	</div>
 </div>

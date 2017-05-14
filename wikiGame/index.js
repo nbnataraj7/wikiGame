@@ -5,7 +5,8 @@ _wiki_game = {
 	"2": "https://en.wikipedia.org/wiki/Physics",
 	"3": "https://en.wikipedia.org/wiki/Chemistry",
 	"targetWiki": null,
-	"clicks": []
+	"clicks": [],
+	"defaultURL": "https://en.m.wikipedia.org/wiki/"
 }
 
 
@@ -13,23 +14,37 @@ _wiki_game = {
 var getRandomWiki = function(callback){
 
 	//generate the url
-	var remoteUrlWithOrigin = "https://www.mediawiki.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=1";
-//	var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?format=json&generator=random&action=query";
+//	var remoteUrlWithOrigin = "https://www.mediawiki.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=1";
+	var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?format=json&generator=random&action=query";
 	var queryData = [];
 	// Using jQuery
-	$.ajax({
-		url: remoteUrlWithOrigin,
-		data: queryData,
-		dataType: 'json',
-		type: 'POST',
-		headers: { 'Api-User-Agent': 'Example/1.0',
-			'Access-Control-Allow-Origin': '*',
-			'Origin': 'https://nbnataraj7.github.io/wikiGame/wikiGame/'
-		},
-		success: function(data) {
-			// do something with data
+	
+	$.getJSON("https://en.wikipedia.org/w/api.php?action=query&format=json&grnnamespace=0&prop=extracts&generator=random&origin=*", function(data){
+		console.log(data);
+		if(data && data.query && data.query.pages){
+			var keys = Object.keys(data.query.pages);
+			if(keys.length > 0){
+				var title = data.query.pages[keys[0]].title;
+				var wikiTitle = title.split(" ").join("_");
+				callback.call(this, wikiTitle);
+			}
 		}
-	} );
+	});
+}
+
+var gameOver = function(success){
+	$("#gameCover").hide();
+	$("#iframePanel").hide();
+	$("#gameOverPanel").show();
+	if(success){	
+		$("#gameOverImage").attr("src", "resources/heart.png");
+		$(".score").html("<div>Congratulations!!!</div><span>You used "+_wiki_game.clicks.length+" clicks to navigate to the target page ("+_wiki_game.target+
+		")</span>");
+	}
+	else{
+		$("#gameOverImage").attr("src", "resources/sad.png");
+		$(".score").html("<div>Sorry!</div><span>You can try again if you want.</span>");
+	}
 }
 
 var play = function(){
@@ -41,8 +56,8 @@ var play = function(){
 	_wiki_game.targetWiki = _wiki_game[activeIndex];
 	
 	//get a random wikipedia page
-	getRandomWiki(function(page_title){
-		
+	getRandomWiki(function(wikiTitle){
+		$("#wikiFrame").attr("src", _wiki_game.defaultURL+wikiTitle);
 	});
 }
 
@@ -116,4 +131,12 @@ $(document).ready(function(){
 	$("#closeRestartDialog").click(function(e){$("#confirmRestart").modal('toggle');});
 	$("#restartGame").click(function(e){window.location.reload();});
 	
+	//adding events to iframe
+	$("#wikiFrame").on("load", function(e){
+		var url = $(this).attr("src");
+		_wiki_game["clicks"].push(url);
+		if(url == _wiki_game["targetWiki"]){
+			
+		}
+	});
 });
