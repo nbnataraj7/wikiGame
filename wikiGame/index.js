@@ -13,7 +13,8 @@ _wiki_game = {
 var getRandomWiki = function(callback){
 
 	//generate the url
-	var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?format=json&generator=random&action=query";
+	var remoteUrlWithOrigin = "https://www.mediawiki.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=1";
+//	var remoteUrlWithOrigin = "https://en.wikipedia.org/w/api.php?format=json&generator=random&action=query";
 	var queryData = [];
 	// Using jQuery
 	$.ajax({
@@ -21,7 +22,10 @@ var getRandomWiki = function(callback){
 		data: queryData,
 		dataType: 'json',
 		type: 'POST',
-		headers: { 'Api-User-Agent': 'Example/1.0', 'Access-Control-Allow-Origin': '*' },
+		headers: { 'Api-User-Agent': 'Example/1.0',
+			'Access-Control-Allow-Origin': '*',
+			'Origin': 'https://nbnataraj7.github.io/wikiGame/wikiGame/'
+		},
 		success: function(data) {
 			// do something with data
 		}
