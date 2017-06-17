@@ -24,7 +24,8 @@ var getRandomWiki = function(callback){
 		if(data && data.query && data.query.pages){
 			var keys = Object.keys(data.query.pages);
 			if(keys.length > 0){
-				var title = data.query.pages[keys[0]].title;
+				var title = data.query.page
+				s[keys[0]].title;
 				var wikiTitle = title.split(" ").join("_");
 				callback.call(this, wikiTitle);
 			}
